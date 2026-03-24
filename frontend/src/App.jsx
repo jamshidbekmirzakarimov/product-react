@@ -8,8 +8,8 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route index element={<Layout />}>
-          <Route path="/allproducts" element={<AllProducts />} />
+        <Route element={<Layout />}>
+          <Route index element={<AllProducts />} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
         </Route>
