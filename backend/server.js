@@ -2,6 +2,7 @@ import express from 'express';
 import productRouter from './routes/productRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import pool from './db/db.js'
 dotenv.config();
 
 const app = express();
@@ -13,5 +14,6 @@ app.use(express.json());
 app.use("/products", productRouter);
 
 app.listen(PORT, () => {
+	pool
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
