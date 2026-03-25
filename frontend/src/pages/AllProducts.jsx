@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
-import ProductCard from '../components/ProductCard'
-import './page.css'
+import React from 'react'
 
 const AllProducts = () => {
 	const [products, setProducts] = useState([])

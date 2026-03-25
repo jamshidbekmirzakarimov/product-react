@@ -10,26 +10,30 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-export const getSingleProduct = (req, res) => {
-  res.json({ message: "Get single product" });
+
+export const getSingleProduct = async (req, res) => {
+
+	const productId = +req.params.id;
+	console.log(productId,'id keldi');
+	
+
+	try{
+		const result = await pool.query(`select * from products
+			where id = $1
+			`,[productId])
+		console.log("rows:", result.rows);
+		return res.status(200).json({ message: 'Get single product', result: result.rows[0] })
+
+	}catch(error){
+		console.log(error.message);
+		res.status(500).json({message:'Single product is not defiend!'})
+	}
+
 };
 
-export const addProduct = async (req, res) => {
-	try {
-        const { title, price, description, image } = req.body;
-
-        const { rows } = await pool.query(`
-            INSERT INTO products (title, price, description, image)
-            VALUES ($1, $2, $3, $4)
-            RETURNING *
-        `, [title, price, description, image]);
-
-        res.status(201).json(rows[0]);
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ message: 'Server xato' });
-    }
-}
+export const addProduct = (req, res) => {
+	res.json({ message: 'Create a new product' })
+};
 
 export const deleteProduct = async (req, res) => {
   try {
