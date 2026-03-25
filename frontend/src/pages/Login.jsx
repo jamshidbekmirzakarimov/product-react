@@ -29,10 +29,10 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      if (!res.ok) throw new Error(data.error || "Xatolik yuz berdi");
       const data = await res.json();
       toast.success("Foydalanuvchi muvaffaqiyatli yaratildi!");
       navigate("/");
-      if (!res.ok) throw new Error(data.error || "Xatolik yuz berdi");
     } catch (err) {
       setError(err.message);
     } finally {
