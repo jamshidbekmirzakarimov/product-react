@@ -1,5 +1,6 @@
 import pool from "../db/db.js";
 import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken'
 
 export const getUsers = async (req, res) => {
   try {
@@ -30,3 +31,45 @@ export const createUser = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const checkLogin = async (req, res) => {
+    const { username, password } = req.body
+
+    const result = await pool.query(
+        `
+            SELECT * FROM users
+            WHERE username = $1
+        `,
+        [username]
+    )
+
+    if (!result.rows[0]) return res.status(500).json({ message: 'Password or Email wrong' });
+
+    const hasedPasswordValue = result.rows[0].password
+    const userInfo = result.rows[0]
+    const checkPassword = await bcrypt.compare(password, hasedPasswordValue)
+
+    console.log(checkPassword);
+
+    if (!checkPassword) res.status(500).json({ message: 'Password or Email wrong' });
+
+    const accessToken = jwt.sign(
+      {
+        id: userInfo.id,
+        username: userInfo.username
+      },
+      'Secret',
+      {expiresIn: '5m'}
+    )
+    
+    const refreshToken = jwt.sign(
+      {
+        id: userInfo.id,
+        username: userInfo.username
+      },
+      'Secret',
+      {expiresIn: '10m'}
+    )
+        
+    res.status(200).json({ message: 'SUCCESS', username: userInfo.username, role: userInfo.role, accessToken, refreshToken })
+}
