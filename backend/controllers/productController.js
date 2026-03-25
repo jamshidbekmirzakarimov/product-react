@@ -15,7 +15,6 @@ export const getSingleProduct = (req, res) => {
 };
 
 export const addProduct = async (req, res) => {
-	res.json({ message: 'Create a new product' })
 	try {
         const { name, price, description, image } = req.body;
 
