@@ -7,8 +7,11 @@ import { ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+
       <App />
       <ToastContainer position="top-right" autoClose={2000} />
+      
     </BrowserRouter>
+
   </StrictMode>,
 );
