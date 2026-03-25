@@ -17,6 +17,9 @@ const Header = () => {
                 <Link to="/login">
                     Login
                 </Link>
+                <Link to={'/cart'}>
+                    🛒
+                </Link>
             </nav>
         </header>
     );
