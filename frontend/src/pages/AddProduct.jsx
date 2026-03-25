@@ -151,11 +151,10 @@ const AddProduct = () => {
           {/* Feedback message */}
           {message && (
             <div
-              className={`rounded-lg px-4 py-3 text-sm border ${
-                message.type === "success"
+              className={`rounded-lg px-4 py-3 text-sm border ${message.type === "success"
                   ? "bg-emerald-950 border-emerald-700 text-emerald-300"
                   : "bg-red-950 border-red-700 text-red-300"
-              }`}
+                }`}
             >
               {message.text}
             </div>
