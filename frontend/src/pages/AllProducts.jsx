@@ -2,12 +2,13 @@ import React from 'react'
 
 const AllProducts = () => {
 	const [products, setProducts] = useState([])
-
+	const [isloading, setIsLoading] = useState(true)
 	useEffect(() => {
 		const fetchingProducts = async () => {
 			const res = await fetch('http://localhost:4334/products/')
 			const data = await res.json()
 			setProducts(data)
+			setIsLoading(false)
 		}
 		fetchingProducts()
 	}, [])
@@ -23,15 +24,20 @@ const AllProducts = () => {
 	}
 
 	return (
-		<div className='products-container'>
-			{products.map(product => (
-				<ProductCard
-					key={product.id}
-					product={product}
-					onDelete={deletedProduct}
-				/>
-			))}
-		</div>
+		<>
+			{isloading ? (
+				<div className="min-h-screen flex items-center justify-center">
+					<div className="loader"></div>
+				</div>
+			) : (
+				<div className="products-container">
+					{products.map(product => (
+						<ProductCard key={product.id} product={product} onDelete={deletedProduct} />
+
+					))}
+				</div>
+			)}
+		</>
 	)
 }
 
