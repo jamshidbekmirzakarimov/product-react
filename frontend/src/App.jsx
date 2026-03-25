@@ -3,6 +3,7 @@ import AllProducts from "./pages/AllProducts";
 import AddProduct from "./pages/AddProduct";
 import Layout from "./pages/Layout";
 import SingleProduct from "./pages/SingleProduct";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
         </Route>
+      <Route path="/register" element={<Register/>} />
       </Routes>
     </div>
   );
