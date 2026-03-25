@@ -4,17 +4,19 @@ import AddProduct from "./pages/AddProduct";
 import Layout from "./pages/Layout";
 import SingleProduct from "./pages/SingleProduct";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
     <div>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<AllProducts />} />
+          <Route index path="/" element={<AllProducts />} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
         </Route>
-        <Route path="/register" element={<Register />} />
+      <Route path="/register" element={<Register/>} />
+      <Route path="/login" element={<Login/>} />
       </Routes>
     </div>
   );

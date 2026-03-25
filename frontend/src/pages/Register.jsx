@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const roles = ["admin", "user"];
@@ -26,7 +26,7 @@ export default function Register() {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch("http://localhost:4334/users", {
+            const res = await fetch("http://localhost:4334/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),
@@ -210,7 +210,7 @@ export default function Register() {
                 {/* Footer */}
                 <p className="text-center mt-4 text-xs text-[#9a9ab0] tracking-wide">
                     Allaqachon ro'yxatdan o'tganmisiz?{" "}
-                    <a href="#" className="text-[#e94560] font-semibold hover:underline">Kirish</a>
+                    <Link to="/login" className="text-[#e94560] font-semibold hover:underline">Kirish</Link>
                 </p>
             </div>
         </div>
