@@ -11,9 +11,9 @@ export default function App() {
     <div>
       <Routes>
         <Route element={<Layout />}>
-          <Route index path="/" element={<AllProducts />} />
+          <Route path="/" element={<AllProducts />} />
           <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/singleproduct" element={<SingleProduct />} />
+          <Route path="/singleproduct/:id" element={<SingleProduct />} />
         </Route>
       <Route path="/register" element={<Register/>} />
       <Route path="/login" element={<Login/>} />

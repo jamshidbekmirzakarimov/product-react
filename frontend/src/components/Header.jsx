@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 const Header = () => {
@@ -8,12 +8,15 @@ const Header = () => {
                 ProShop
             </Link>
             <nav>
-                <NavLink to="/allProducts">
+                <Link to="/">
                     Barcha Mahsulotlar
-                </NavLink>
-                <NavLink to="/AddProduct">
+                </Link>
+                <Link to="/AddProduct">
                     Mahsulot Qo'shish
-                </NavLink>
+                </Link>
+                <Link to="/login">
+                    Login
+                </Link>
             </nav>
         </header>
     );
