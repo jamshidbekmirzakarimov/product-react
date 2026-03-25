@@ -14,7 +14,7 @@ export default function App() {
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
         </Route>
-      <Route path="/register" element={<Register/>} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
