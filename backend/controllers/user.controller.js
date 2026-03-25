@@ -51,7 +51,7 @@ export const checkLogin = async (req, res) => {
 
     console.log(checkPassword);
 
-    if (!checkPassword) res.status(500).json({ message: 'Password or Email wrong' });
+    if (!checkPassword) return res.status(500).json({ message: 'Password or Email wrong' });
 
     const accessToken = jwt.sign(
       {
