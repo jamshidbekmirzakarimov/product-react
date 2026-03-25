@@ -30,7 +30,7 @@ export default function Login() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      toast.success("Foydalanuvchi muvaffaqiyatli yaratildi!");
+      toast.success("Tizimga kirildi");
       navigate("/");
       if (!res.ok) throw new Error(data.error || "Xatolik yuz berdi");
     } catch (err) {
