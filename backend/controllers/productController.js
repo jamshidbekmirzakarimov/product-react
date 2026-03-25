@@ -1,5 +1,13 @@
-export const getAllProducts = (req, res) => {
-	res.json({ message: 'Get all products' })
+import pool from '../db/db.js'
+
+export const getAllProducts = async (req, res) => {
+	try {
+		const { rows } = await pool.query('SELECT * FROM products')
+		res.json(rows)
+	} catch (error) {
+		console.log(error.message)
+		res.status(500).json({ message: 'Server xato' })
+	}
 }
 
 export const getSingleProduct = (req, res) => {
