@@ -31,7 +31,7 @@ export default function Login() {
       });
       if (!res.ok) throw new Error("Username yoki password xato");
       const data = await res.json();
-      toast.success("Foydalanuvchi muvaffaqiyatli yaratildi!");
+      toast.success("Tizimga muvaffaqiyatli kirildi!");
       navigate("/");
     } catch (err) {
       setError(err.message);
