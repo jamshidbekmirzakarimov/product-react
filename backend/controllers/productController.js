@@ -18,6 +18,16 @@ export const addProduct = (req, res) => {
 	res.json({ message: 'Create a new product' })
 }
 
-export const deleteProduct = (req, res) => {
-	res.json({ message: 'Delete a product' })
+export const deleteProduct = async (req, res) => {
+	try {
+		const {id} = req.params
+		await pool.query(`
+				Delete from products
+				where id = $1
+			`, [id])
+		res.status(201).json({message: "Success deleted"})
+	} catch (error) {
+		console.log(error.message)
+		res.status(500).json({ message: 'Server xato' })
+	}
 }
