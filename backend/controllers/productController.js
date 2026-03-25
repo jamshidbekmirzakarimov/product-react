@@ -16,13 +16,13 @@ export const getSingleProduct = (req, res) => {
 
 export const addProduct = async (req, res) => {
 	try {
-        const { name, price, description, image } = req.body;
+        const { title, price, description, image } = req.body;
 
         const { rows } = await pool.query(`
-            INSERT INTO products (name, price, description, image)
+            INSERT INTO products (title, price, description, image)
             VALUES ($1, $2, $3, $4)
             RETURNING *
-        `, [name, price, description, image]);
+        `, [title, price, description, image]);
 
         res.status(201).json(rows[0]);
     } catch (error) {
