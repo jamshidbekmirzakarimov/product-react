@@ -21,8 +21,9 @@ const AllProducts = () => {
 				'Content-Type': 'application/json',
 			},
 		})
+		setProducts(products.filter(product => product.id !== id))
 	}
-	
+
 	return (
 		<div className='products-container'>
 			{products.map(product => (
