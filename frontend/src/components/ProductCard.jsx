@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import './card.css'
+// import SingleProduct from '../pages/SingleProduct'
 
 function ProductCard({ product, onDelete }) {
-	const { title, price, description, image } = product
+	const {id, title, price, description, image } = product
 	return (
+		<Link to={`/singleproduct/${id}`} >
 		<div className='card'>
 		<Link to={`/products/${product.id}`}>
          
@@ -17,6 +19,7 @@ function ProductCard({ product, onDelete }) {
 
             </Link>
 		</div>
+		</Link>
 	)
 }
 
