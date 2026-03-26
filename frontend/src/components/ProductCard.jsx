@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom'
 import './card.css'
+// import SingleProduct from '../pages/SingleProduct'
 
 function ProductCard({ product, onDelete }) {
-	const { title, price, description, image } = product
+	const {id, title, price, description, image } = product
 	return (
+		<Link to={`/singleproduct/${id}`} >
 		<div className='card'>
 			<img src={image} alt={title} />
 			<h1 className='title'>{title}</h1>
@@ -12,6 +15,7 @@ function ProductCard({ product, onDelete }) {
 				x
 			</button>
 		</div>
+		</Link>
 	)
 }
 

@@ -10,8 +10,17 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-export const getSingleProduct = (req, res) => {
-  res.json({ message: "Get single product" });
+export const getSingleProduct = async (req, res) => {
+  const id = +req.params.id;
+  try{
+    const result = await pool.query(`select * from products 
+      where id = $1`,[id])
+    res.status(200).json({message: 'Maxsulot olindi:', result: result.rows[0]})
+
+  }catch(error){
+    console.log(error.message);
+    res.status(500).json({message:"Server xato"})
+  }
 };
 
 export const addProduct = async (req, res) => {
