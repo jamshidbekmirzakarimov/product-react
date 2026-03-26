@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const [form, setForm] = useState({
@@ -40,7 +39,6 @@ const AddProduct = () => {
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.message || "Xato yuz berdi");
-
       setMessage({ type: "success", text: `✅ "${data.title}" mahsulot muvaffaqiyatli qo'shildi!` });
       setForm({ title: "", price: "", description: "", image: "" });
     } catch (err) {
