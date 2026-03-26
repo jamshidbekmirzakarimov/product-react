@@ -5,6 +5,7 @@ import Layout from "./pages/Layout";
 import SingleProduct from "./pages/SingleProduct";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Cart from './pages/Cart'
 
 export default function App() {
   return (
@@ -13,10 +14,11 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<AllProducts />} />
           <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/singleproduct/:id" element={<SingleProduct />} />
+          <Route path="/products/:productId" element={<SingleProduct />} />
         </Route>
       <Route path="/register" element={<Register/>} />
       <Route path="/login" element={<Login/>} />
+      <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );

@@ -7,6 +7,8 @@ function ProductCard({ product, onDelete }) {
 	return (
 		<Link to={`/singleproduct/${id}`} >
 		<div className='card'>
+		<Link to={`/products/${product.id}`}>
+         
 			<img src={image} alt={title} />
 			<h1 className='title'>{title}</h1>
 			<p className='price'>${price}</p>
@@ -14,6 +16,8 @@ function ProductCard({ product, onDelete }) {
 			<button className='delete-btn' onClick={() => onDelete(product.id)}>
 				x
 			</button>
+
+            </Link>
 		</div>
 		</Link>
 	)
